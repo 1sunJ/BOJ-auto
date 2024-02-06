@@ -12,6 +12,6 @@ for x in str1 :
             que.pop()
 
 if que :
-    print(*que, sep = '')
+    print("".join(que))
 else :
     print("FRULA")
