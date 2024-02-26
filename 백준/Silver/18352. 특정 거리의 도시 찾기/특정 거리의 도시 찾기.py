@@ -14,6 +14,8 @@ que = deque([X])
 
 while que :
     x = que.popleft()
+    if visited[x] > K+1 :
+        continue
 
     for y in adjList[x] :
         if visited[y] :
