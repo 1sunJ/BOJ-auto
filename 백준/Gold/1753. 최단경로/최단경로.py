@@ -8,8 +8,6 @@ def dijkstra(start) :
 
     while que :
         w, cur = heapq.heappop(que)
-        # print("distance", distance)
-        # print(w, cur)
 
         if w > distance[cur] :
             continue
@@ -17,7 +15,6 @@ def dijkstra(start) :
         for v, ww in adjList[cur] :
             ww = ww + w
 
-            # print('v, ww', v, ww, distance[v])
             if ww < distance[v] :
                 distance[v] = ww
                 heapq.heappush(que, [ww, v])
@@ -29,8 +26,6 @@ for i in range(M) :
     u, v, w = map(int, input().split())
     adjList[u-1].append([v-1, w])
 
-visited = [False] * N
-visited[K] = True
 distance = [sys.maxsize] * N
 distance[K] = 0
 
