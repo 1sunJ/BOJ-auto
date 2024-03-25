@@ -25,11 +25,13 @@ def isConnected() :
 
     return True if l == 7 else False
 
+# make point combination by backtracking
 def dfs(idx, so, ye) :
     if ye == 4 :
         return
     
     if so + ye == 7 :
+        # check by bfs
         if isConnected() :
             global answer
             answer += 1
