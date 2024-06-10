@@ -43,8 +43,6 @@ for _ in range(M) :
         n = (n >> 1) + 2 ** 20
         arr[i] = toBinary(n)
 
-    # print(*arr, sep = '\n')
-
 answer = set()
 for x in arr[1::] :
     answer.add(int(x, 2))
