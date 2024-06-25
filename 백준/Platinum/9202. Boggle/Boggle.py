@@ -19,6 +19,7 @@ def dfs(p, x, y, arr) :
             else :
                 longest = word
         cnt += 1
+        # return  # 실패 요인
     
     for mx, my in MOVE :
         mx, my = x + mx, y + my
