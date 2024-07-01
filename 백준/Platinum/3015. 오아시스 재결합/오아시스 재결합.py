@@ -9,9 +9,6 @@ size = 0
 answer = 0
 
 for x in arr :
-    # print()
-    # print("start", x, ":", st)
-
     if size == 0 :
         st.append([x, 1])
         size += 1
@@ -32,14 +29,11 @@ for x in arr :
                 cnt += 1
     
     answer += cnt
-    # print("cnt", cnt, answer)
 
     if size > 0 and st[-1][0] == x :
         st[-1][1] += 1
     else :
         st.append([x, 1])
     size += 1
-    
-    # print("end", x, ":", st)
 
 print(answer)
