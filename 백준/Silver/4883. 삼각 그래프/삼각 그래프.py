@@ -1,10 +1,9 @@
-# 음수 가능인지는 몰랐지 !!!!
+# 개선 코드
 
 import sys
-MAX= sys.maxsize
 input = sys.stdin.readline
+MAX= sys.maxsize
 
-MOVES = ((0, 1), (1, 1), (1, -1), (1, 0))
 
 t = 1
 while True :
@@ -13,24 +12,15 @@ while True :
         break
 
     mtx = [list(map(int, input().split())) for _ in range(N)]
-    dp = [[MAX] * 3 for _ in range(N)]
-    
-    dp[0] = mtx[0][::]
-    dp[0][2] = mtx[0][1] + mtx[0][2]
-    dp[1][0] = dp[0][1] + mtx[1][0]
-    dp[1][1] = min(dp[0][1], dp[0][2], dp[1][0]) + mtx[1][1]
-    dp[1][2] = min(dp[0][1], dp[0][2], dp[1][1]) + mtx[1][2]
+
+    prev = [MAX, mtx[0][1], mtx[0][1] + mtx[0][2]]
 
     for i in range(1, N) :
-        for j in range(3) :
-            for mx, my in MOVES :
-                x, y = i + mx, j + my
-                if not 0 <= x < N or not 0 <= y < 3 :
-                    continue
+        cur = [0, 0, 0]
+        cur[0] = min(prev[0], prev[1]) + mtx[i][0]
+        cur[1] = min(prev[0], prev[1], prev[2], cur[0]) + mtx[i][1]
+        cur[2] = min(prev[1], prev[2], cur[1]) + mtx[i][2]
+        prev = cur
 
-                dp[x][y] = min(dp[x][y], dp[i][j] + mtx[x][y])
-
-    # print(*dp, sep = '\n')
-
-    print("%d. %d" %(t, dp[N-1][1]))
+    print("%d. %d" %(t, cur[1]))
     t += 1
